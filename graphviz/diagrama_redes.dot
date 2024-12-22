@@ -1,0 +1,85 @@
+digraph Projeto {
+    rankdir=LR;
+    node [shape=box, style=filled, color=lightblue];
+
+    start [shape=circle, label="Início do Projeto", style=filled, color=lightgreen, width=0.5, height=0.5];
+    end [shape=circle, label="Final do Projeto", style=filled, color=lightcoral, width=0.5, height=0.5];
+
+    subgraph cluster_planejamento {
+        label="Planejamento";
+        "1.1.1" [label="1.1.1\nTempo: 4 semanas"];
+        "1.1.2" [label="1.1.2\nTempo: 3 semanas"];
+        "1.1.3" [label="1.1.3\nTempo: 3 semanas"];
+        "1.1.4" [label="1.1.4\nTempo: 3 semanas"];
+        "1.1.5" [label="1.1.5\nTempo: 3 semanas"];
+    }
+
+    subgraph cluster_desenvolvimento {
+        label="Desenvolvimento";
+        "1.2.1" [label="1.2.1\nTempo: 6 semanas"];
+        "1.2.2" [label="1.2.2\nTempo: 4 semanas"];
+        "1.2.3" [label="1.2.3\nTempo: 4 semanas"];
+        "1.2.4" [label="1.2.4\nTempo: 3 semanas"];
+        "1.2.5" [label="1.2.5\nTempo: 4 semanas"];
+    }
+
+    subgraph cluster_testes {
+        label="Testes";
+        "1.3.1" [label="1.3.1\nTempo: 2 semanas"];
+        "1.3.2" [label="1.3.2\nTempo: 2 semanas"];
+        "1.3.3" [label="1.3.3\nTempo: 4 semanas"];
+        "1.3.4" [label="1.3.4\nTempo: 2 semanas"];
+    }
+
+    subgraph cluster_implantacao {
+        label="Implantação";
+        "1.4.1" [label="1.4.1\nTempo: 2 semanas"];
+        "1.4.2" [label="1.4.2\nTempo: 2 semanas"];
+        "1.4.3" [label="1.4.3\nTempo: 1 semana"];
+        "1.4.4" [label="1.4.4\nTempo: 1 semana"];
+    }
+
+    subgraph cluster_treinamento {
+        label="Treinamento e Suporte";
+        "1.5.1" [label="1.5.1\nTempo: 6 semanas"];
+        "1.5.2" [label="1.5.2\nTempo: 2 semanas"];
+        "1.5.3" [label="1.5.3\nTempo: 2 semanas"];
+    }
+
+    start -> "1.1.1";
+    "1.5.2" -> end;
+    "1.5.3" -> end;
+
+    // Planejamento
+    "1.1.1" -> "1.1.2";
+    "1.1.1" -> "1.1.3";
+    "1.1.2" -> "1.1.4";
+    "1.1.3" -> "1.1.4";
+    "1.1.4" -> "1.1.5";
+
+    // Desenvolvimento
+    "1.1.5" -> "1.2.1";
+    "1.2.1" -> "1.2.2";
+    "1.2.1" -> "1.2.3";
+    "1.2.2" -> "1.2.4";
+    "1.2.3" -> "1.2.4";
+    "1.2.4" -> "1.2.5";
+
+    // Testes
+    "1.2.5" -> "1.3.1";
+    "1.3.1" -> "1.3.2";
+    "1.3.1" -> "1.3.3";
+    "1.3.2" -> "1.3.4";
+    "1.3.3" -> "1.3.4";
+
+    // Implantação
+    "1.3.4" -> "1.4.1";
+    "1.4.1" -> "1.4.2";
+    "1.4.2" -> "1.4.3";
+    "1.4.3" -> "1.4.4";
+
+    // Treinamento
+    "1.4.4" -> "1.5.1";
+    "1.5.1" -> "1.5.2";
+    "1.5.1" -> "1.5.3";
+}
